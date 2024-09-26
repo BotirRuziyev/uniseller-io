@@ -387,10 +387,6 @@ body {
         display: flex;
         align-items: center;
         gap: 9px;
-
-        @include media(1100) {
-            display: none;
-        }
     }
 
     .bars {
@@ -433,6 +429,7 @@ body {
         display: flex;
         flex-direction: column;
         gap: 30px;
+        margin-bottom: 30px;
 
         button {
             font-family: var(--font-family);
@@ -462,6 +459,111 @@ body {
 
             a {
                 font-size: 16px;
+            }
+        }
+    }
+    &_bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        .orange-wrapper {
+            position: relative;
+            order: 2;
+            .btn_orange {
+                width: 100%;
+                font-size: 20px;
+                padding: 15px 20px;
+            }
+            @include media(450) {
+                width: 100%;
+            }
+        }
+        .header-modal {
+            width: 197px;
+            min-width: 100%;
+            box-shadow: 6px 2px 20px 0 rgba(0, 0, 0, 0.3);
+            background: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            transform: translateY(30px);
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            z-index: 2;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+            .form_control {
+                margin-bottom: 16px;
+                label {
+                    font-family: var(--second-family);
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #000;
+                    margin-bottom: 5px;
+                }
+                input {
+                    width: 100%;
+                    border: 1px solid rgba(0, 0, 0, 0.2);
+                    border-radius: 20px;
+                    padding: 6px 15px;
+                    font-family: var(--second-family);
+                    font-weight: 500;
+                    font-size: 14px;
+                    color: #000;
+                }
+                .error-message {
+                    display: block;
+                    margin-top: 5px;
+                    font-family: var(--second-family);
+                    font-weight: 500;
+                    font-size: 12px;
+                    color: red;
+                }
+            }
+            .btn {
+                width: 100%;
+                background: #ef6c1e;
+                border-radius: 5px;
+                padding: 10px 20px;
+                margin-top: 20px;
+                font-family: var(--font4);
+                font-weight: 600;
+                font-size: 14px;
+                color: #fff;
+                transition: 0.2s ease all;
+
+                &:hover {
+                    background: #c05f27;
+                }
+            }
+        }
+        .header-modal.active {
+            transform: translateY(0);
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+
+    &__auth {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        order: 1;
+        li {
+            position: relative;
+            button {
+                font-family: var(--second-family);
+                font-weight: 500;
+                font-size: 25px;
+                color: #fff;
+            }
+            &:nth-child(2) {
+                .header-modal {
+                    left: auto;
+                    right: 0;
+                }
             }
         }
     }

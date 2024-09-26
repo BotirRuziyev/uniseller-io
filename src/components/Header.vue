@@ -49,6 +49,7 @@ export default {
       if (this.userSignIn.email) {
         this.$store.dispatch("auth/login", this.userSignIn).then(
           () => {
+            this.menu = false;
             this.successful = true;
             this.$router.push("/profile");
             document.querySelectorAll(".header-modal").forEach((e, i) => {
@@ -70,6 +71,7 @@ export default {
     handleRegister() {
       this.$store.dispatch("auth/register", this.userSignUp).then(
         (data) => {
+          this.menu = false;
           this.successful = true;
           document.querySelectorAll(".header-modal").forEach((e, i) => {
             e.classList.remove("active");
@@ -571,5 +573,67 @@ export default {
         </ul>
       </li>
     </ul>
+    <div class="mobile_menu_bottom">
+      <div class="orange-wrapper">
+        <button class="btn_orange" @click="Modal('leave-request')">
+          Оставить заявку
+        </button>
+        <div class="header-modal" data-filter="leave-request">
+          <form>
+            <div class="form_control">
+              <label for="name">Имя</label>
+              <input type="text" id="name" />
+            </div>
+            <div class="form_control">
+              <label for="phone">Номер телефона*</label>
+              <input type="text" id="phone" />
+            </div>
+            <button class="requaest_call_btn btn">Заказать звонок</button>
+          </form>
+        </div>
+      </div>
+      <ul class="mobile_menu__auth" v-if="!successful">
+        <li>
+          <button class="auth_btn" @click="Modal('sign-in')">Войти</button>
+          <div class="header-modal" data-filter="sign-in">
+            <form name="form" @submit.prevent="handleLogin">
+              <div class="form_control">
+                <label for="sign-in-email">электронная почта*</label>
+                <input
+                  type="email"
+                  id="sign-in-email"
+                  v-model="userSignIn.email"
+                />
+                <span class="error-message" v-if="messageSignIn">{{
+                  messageSignIn
+                }}</span>
+              </div>
+              <button class="sign_in_btn btn">Войти</button>
+            </form>
+          </div>
+        </li>
+        <li>
+          <button class="auth_btn" @click="Modal('sign-up')">
+            Регистрация
+          </button>
+          <div class="header-modal" data-filter="sign-up">
+            <form name="form" @submit.prevent="handleRegister">
+              <div class="form_control">
+                <label for="sign-up-email">электронная почта*</label>
+                <input
+                  type="email"
+                  id="sign-up-email"
+                  v-model="userSignUp.email"
+                />
+                <span class="error-message" v-if="messageSignUp">{{
+                  messageSignUp
+                }}</span>
+              </div>
+              <button class="sign_up_btn btn">Регистрация</button>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
