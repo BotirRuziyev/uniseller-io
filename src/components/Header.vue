@@ -29,7 +29,7 @@ export default {
   },
   created() {
     if (!this.loggedIn) {
-      this.successful = true;
+      this.successful = false;
     }
   },
   methods: {
