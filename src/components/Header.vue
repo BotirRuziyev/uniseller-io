@@ -73,6 +73,7 @@ export default {
         (data) => {
           this.menu = false;
           this.successful = true;
+          this.$router.push("/profile");
           document.querySelectorAll(".header-modal").forEach((e, i) => {
             e.classList.remove("active");
           });
