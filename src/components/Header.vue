@@ -91,7 +91,8 @@ export default {
     window.onclick = (e) => {
       if (
         !e.target.closest(".header-modal") &&
-        !e.target.closest(".auth_btn")
+        !e.target.closest(".auth_btn") &&
+        !e.target.closest(".btn_orange")
       ) {
         document.querySelectorAll(".header-modal").forEach((e, i) => {
           e.classList.remove("active");
